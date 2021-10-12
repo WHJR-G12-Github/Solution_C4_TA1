@@ -1,7 +1,6 @@
 import pygame,math
 
 pygame.init()
-clock=pygame.time.Clock()
 screen = pygame.display.set_mode((400,600))
 
 pygame.display.set_caption("Shooting Spaceship")
@@ -23,11 +22,11 @@ distance=5
 forward=False
 
 # Defining a function 'newxy()' to calculate new x,y coordinates
-# New x,y coordinates are based on old x,y coordinates, angle, distance 
-def newxy(oldx,oldy,distance,angle):
+# New x,y coordinates are based on x,y coordinates, angle, distance 
+def newxy(x,y,distance,angle):
   angle=math.radians(angle+90)
-  nx=oldx+(distance*math.cos(angle))
-  return nx
+  xnew=x+(distance*math.cos(angle))
+  return xnew
 
 while True:
   screen.blit(background_image,[0,0])
@@ -73,5 +72,5 @@ while True:
   pygame.draw.rect(screen,WHITE,enemy)
 
   pygame.display.update()
-  clock.tick(30)
+  pygame.time.Clock().tick(30)
   
